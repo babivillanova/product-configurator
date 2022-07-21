@@ -1,0 +1,29 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* .container {
+  display: block;
+  width: 200px;
+  height: 400px;
+  padding: 0 15px;
+  align-items: center;
+} */
+.seleção {
+  /* display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 20px; */
+}
+
+.imagem,
+.imagem2 {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url("Carbon Lateral.gif");
+}
