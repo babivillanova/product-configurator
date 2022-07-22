@@ -4,8 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.rawgit.com/Keyang/node-csvtojson/d41f44aa/browser/csvtojson.min.js"></script>
     <title>Product Configurator</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <div class="header">
       <h1>Customizador Griffon</h1>
       <button id="btn" class="button">
@@ -43,6 +47,7 @@
   </body>
 
   <script>
+    //scrip para checar os botões
     const btn = document.querySelector("#btn");
     const radioButtons = document.querySelectorAll('input[name="radio"]');
     btn.addEventListener("click", () => {
@@ -63,6 +68,157 @@
     // document.getElementById("radioC").style.backgroundImage =
     //   "url('https://drive.google.com/file/d/1uGZ4iSu-K_-Zx_YOKyUnc5lRp9C3aeSx/view?usp=sharing')";
   </script>
+
+  <script>
+    //script para pegar dados do csv
+
+    csv({
+      output: "csv",
+    });
+    const url =
+      "https://docs.google.com/spreadsheets/d/1lTZpSuPc0hgY5xglxDV5K92Bzd97ta6OiBWuW79mkJk/export?format=csv";
+    const quartosInput = document.querySelector("[name=qb]");
+    const quartoInput = document.querySelector("[name=qs]");
+    const banheiroInput = document.querySelector("[name=banheiro]");
+    const depositoInput = document.querySelector("[name=deposito]");
+    const vestiarioInput = document.querySelector("[name=vestiario]");
+    const gourmetInput = document.querySelector("[name=gourmet]");
+    const salaInput = document.querySelector("[name=sala]");
+    const cozinhaInput = document.querySelector("[name=cozinha]");
+    const lavanderiaInput = document.querySelector("[name=lavanderia]");
+    const total = document.querySelector("main");
+    const modeloInput = document.querySelector("[name=modelo]");
+    const terraInput = document.querySelector("[name=precoterreno]");
+    const terrenoInput = document.querySelector("[name=terreno]");
+    const area = document.querySelector("[name=area]");
+    const cidade = document.querySelector("h4");
+
+    fetch(url)
+      .then((result) => result.text())
+      .then(function (csvtext) {
+        return csv().fromString(csvtext);
+      })
+      .then(function (result) {
+        dados = result.map((item) => {
+          return {
+            P: item.P,
+            M: item.M,
+            G: item.G,
+            CHASSIf: item.CHASSIf,
+            ACABAMENTOf: item.ACABAMENTOf,
+            CHASSIc: item.CHASSIc,
+            ACABAMENTOc: item.ACABAMENTOc,
+          };
+        });
+      })
+      .then(function calculateCost(e) {
+        const modelo = modeloInput.value;
+        const quartos = quartosInput.value;
+        const quarto = quartoInput.value;
+        const banheiro = banheiroInput.value;
+        const deposito = depositoInput.value;
+        const vestiario = vestiarioInput.value;
+        const gourmet = gourmetInput.value;
+        const sala = salaInput.value;
+        const cozinha = cozinhaInput.value;
+        const lavanderia = lavanderiaInput.value;
+        const valorterreno = parseFloat(terraInput.value);
+        const terraplanagem = parseFloat(terrenoInput.value);
+
+        if (modelo == "Carbon") {
+          const cost =
+            quartos * dados[7].P * dados[7].CHASSIc + //quartos * áreaP * preço chassi
+            quartos * dados[10].P * dados[10].CHASSIc + //quartos * áreaP do banheiro * preço chassi
+            quarto * dados[7].P * dados[7].CHASSIc + //quarto sem banheiro * áreaP * preço chassi
+            banheiro * dados[10].P * dados[10].CHASSIc + //banheiro extra * áreaP * preço chassi
+            deposito * dados[1].P * dados[1].CHASSIc + // depósito * áreaP * preço chassi
+            vestiario * dados[2].P * dados[2].CHASSIc +
+            gourmet * dados[11].P * dados[11].CHASSIc +
+            sala * dados[5].P * dados[5].CHASSIc +
+            cozinha * dados[4].P * dados[4].CHASSIc +
+            lavanderia * dados[0].P * dados[0].CHASSIc;
+
+          const costMargem =
+            cost * dados[15].CHASSIc + valorterreno + terraplanagem;
+          costMargem.toFixed(0);
+
+          total.innerText =
+            "R$" +
+            new Intl.NumberFormat("pt-BR", { currency: "BRL" }).format(
+              costMargem
+            );
+          area.innerText =
+            (
+              quartos * dados[7].P +
+              quartos * dados[10].P +
+              quarto * dados[7].P +
+              banheiro * dados[10].P +
+              deposito * dados[1].P +
+              vestiario * dados[2].P +
+              gourmet * dados[11].P +
+              sala * dados[5].P +
+              cozinha * dados[4].P +
+              lavanderia * dados[0].P +
+              1 * dados[12].P +
+              1 * dados[14].P +
+              1 * dados[16].P
+            ).toFixed(0) + "m²";
+        } else if (modelo == "Fly") {
+          const cost =
+            quartos * dados[7].P * dados[7].CHASSIf + //quartos * áreaP * preço chassi
+            quartos * dados[10].P * dados[10].CHASSIf + //quartos * áreaP do banheiro * preço chassi
+            quarto * dados[7].P * dados[7].CHASSIf + //quarto sem banheiro * áreaP * preço chassi
+            banheiro * dados[10].P * dados[10].CHASSIf + //banheiro extra * áreaP * preço chassi
+            deposito * dados[1].P * dados[1].CHASSIf + // depósito * áreaP * preço chassi
+            vestiario * dados[2].P * dados[2].CHASSIf +
+            gourmet * dados[11].P * dados[11].CHASSIf +
+            sala * dados[5].P * dados[5].CHASSIf +
+            cozinha * dados[4].P * dados[4].CHASSIf +
+            lavanderia * dados[0].P * dados[0].CHASSIf;
+
+          const costMargem =
+            cost * dados[15].CHASSIf + valorterreno + terraplanagem + 18;
+
+          costMargem.toFixed(0);
+
+          total.innerText =
+            "R$" +
+            new Intl.NumberFormat("pt-BR", { currency: "BRL" }).format(
+              costMargem
+            );
+          area.innerText =
+            parseFloat(
+              quartos * dados[7].P +
+                quartos * dados[10].P +
+                quarto * dados[7].P +
+                banheiro * dados[10].P +
+                deposito * dados[1].P +
+                vestiario * dados[2].P +
+                gourmet * dados[11].P +
+                sala * dados[5].P +
+                cozinha * dados[4].P +
+                lavanderia * dados[0].P +
+                1 * dados[12].P +
+                1 * dados[14].P +
+                1 * dados[16].M
+            ).toFixed(0) + "m²";
+        }
+
+        quartosInput.addEventListener("input", calculateCost);
+        quartoInput.addEventListener("input", calculateCost);
+        banheiroInput.addEventListener("input", calculateCost);
+        depositoInput.addEventListener("input", calculateCost);
+        vestiarioInput.addEventListener("input", calculateCost);
+        gourmetInput.addEventListener("input", calculateCost);
+        salaInput.addEventListener("input", calculateCost);
+        cozinhaInput.addEventListener("input", calculateCost);
+        lavanderiaInput.addEventListener("input", calculateCost);
+        modeloInput.addEventListener("input", calculateCost);
+        terraInput.addEventListener("input", calculateCost);
+        terrenoInput.addEventListener("input", calculateCost);
+      });
+  </script>
+
   <script src="button/demo.js"></script>
   <script src="button/index3.js"></script>
 </html>
