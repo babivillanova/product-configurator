@@ -15,7 +15,7 @@
       <button id="btn" class="button">
         <span class="button__text">
           <span class="button__text-inner"
-            >Visualize a combinação escolhida</span
+            >Visualize a </br>combinação <br/>escolhida</span
           >
         </span>
       </button>
@@ -103,12 +103,13 @@
 
   <script>
     //script para pegar dados do csv
-
+    
     csv({
       output: "csv",
+      
     });
     const url =
-      "https://docs.google.com/spreadsheets/d/1lTZpSuPc0hgY5xglxDV5K92Bzd97ta6OiBWuW79mkJk/export?format=csv";
+      "https://docs.google.com/spreadsheets/d/1Uqv3xBWf_XAFkV_4h1EMAKHa0IRFqnCagmr2XrEuBdk/export?format=csv";
     const quartosInput = document.querySelector("[name=qb]");
     const quartoInput = document.querySelector("[name=qs]");
     const banheiroInput = document.querySelector("[name=banheiro]");
@@ -124,7 +125,24 @@
     const terrenoInput = document.querySelector("[name=terreno]");
     const area = document.querySelector("[name=area]");
     const cidade = document.querySelector("h4");
+    
 
+    const btn2 = document.querySelector("#btn");
+    const radioButtons2 = document.querySelectorAll('input[name="radio"]');
+    btn.addEventListener("click", () => {
+    let selectedMaterial;
+      for (const radioButton of radioButtons) {
+        if (radioButton.checked) {
+          selectedMaterial = radioButton.value;
+
+          break;
+        }
+      }
+      console.log(selectedMaterial);
+    });
+
+      
+    
     fetch(url)
       .then((result) => result.text())
       .then(function (csvtext) {
