@@ -1,29 +1,50 @@
 body {
   font-family: "Open Sans", sans-serif;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 10px 10px 0 10px;
 }
 
-/* .container {
-  display: block;
-  width: 200px;
-  height: 400px;
-  padding: 0 15px;
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 80vh;
+  width: 100vw;
+  margin: 0;
   align-items: center;
-} */
-.seleção {
-  /* display: flex;
-  justify-content: space-between;
+}
 
-  margin-bottom: 20px; */
+.custom {
+  justify-content: center;
+  height: 80vh;
+  width: 40%;
+  margin: 0;
+  background-color: #ffffff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  height: 80vh;
+  width: 50vw;
+  margin: 10px;
+  background-color: #939191;
+}
+
+.seleção {
+  display: flex;
+  justify-content: space-around;
+
+  margin-bottom: 20px;
 }
 
 .imagem,
 .imagem2 {
-  display: inline-block;
-  width: 200px;
-  height: 200px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url("Carbon Lateral.gif");
+  display: inline-flex;
+  width: 100px;
+  height: 100px;
+  /* background-position: center center; */
+  /* background-repeat: ; */
+  background-image: url("monstro do joka.PNG");
 }

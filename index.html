@@ -6,23 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Configurator</title>
     <link rel="stylesheet" href="style.css" />
+    <h1>Customizador Griffon</h1>
   </head>
+
   <body>
     <div class="container">
-      <div class="header">
-        <h1>Customizador Griffon</h1>
+      <div class="custom">
+        <p id="output"></p>
       </div>
-      <form>
-        <fieldset class="seleção">
-          <legend>Torneira</legend>
-          <input type="radio" name="radio" id="radio" />
-          <label class="imagem" for="radio">Opção A</label>
-          <input type="radio" name="radio" id="radio" />
-          <label class="imagem2" for="radio">Opção B</label>
-          <input type="radio" name="radio" id="radio" />
-          <label class="imagem2" for="radio">Opção C</label>
-        </fieldset>
-      </form>
+      <div class="form">
+        Escolha os itens desejados para visualizar a combinação e o valor.
+        <form>
+          <radio>
+            <legend>Torneira</legend>
+            <div class="seleção">
+              <input type="radio" name="radio" id="radio" value="Opção A" />
+              <label class="imagem" for="radio">Opção A</label>
+              <input type="radio" name="radio" id="radio" value="Opção B" />
+              <label class="imagem2" for="radio">Opção B</label>
+              <input type="radio" name="radio" id="radio" value="Opção C" />
+              <label
+                src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220622091251/GOL-Banner-desktop.png"
+                class="imagem2"
+                for="radio"
+                id="radioC"
+                >Opção C</label
+              >
+            </div>
+          </radio>
+        </form>
+      </div>
     </div>
+    <button id="btn">Monte a combinação escolhida</button>
   </body>
+
+  <script>
+    const btn = document.querySelector("#btn");
+    const radioButtons = document.querySelectorAll('input[name="radio"]');
+    btn.addEventListener("click", () => {
+      let selectedMaterial;
+      for (const radioButton of radioButtons) {
+        if (radioButton.checked) {
+          selectedMaterial = radioButton.value;
+          break;
+        }
+      }
+
+      output.innerText = selectedMaterial
+        ? `Você escolheu a ${selectedMaterial}`
+        : `Você ainda não completou sua escolha`;
+    });
+
+    // document.getElementById("radioC").style.backgroundImage =
+    //   "url('https://drive.google.com/file/d/1uGZ4iSu-K_-Zx_YOKyUnc5lRp9C3aeSx/view?usp=sharing')";
+  </script>
 </html>
