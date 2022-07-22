@@ -23,10 +23,11 @@ body {
 #output {
   color: black;
   margin-top: 2px;
-  font-family: "Staatliches", sans-serif;
-  font-weight: 600;
+  font-family: "DM Serif Display";
+  font-weight: 900;
   font-size: 1.2em;
   text-align: right;
+  /* text-transform: uppercase; */
 }
 
 .header {
@@ -40,13 +41,13 @@ h1 {
   font-family: "DM Serif Display";
   font-size: 2.5em;
   font-weight: 300;
-  margin: -10px 10px 10px 0px;
+  margin: -10px 0px 0px 0px;
   color: black;
 }
 
 h2 {
-  font-size: 1em;
-
+  font-size: 0.7em;
+  width: 350px;
   font-weight: 100;
   margin: 0;
   text-transform: uppercase;
@@ -72,14 +73,12 @@ legend {
   margin-top: 80px;
 
   /* align-items: center; */
-  background-color: white;
-  border-radius: 20px;
+  background: rgb(241, 241, 241);
+  /* z2 */
 
-  border: 1px solid rgba(255, 255, 255, 0.048);
-  box-shadow: -4px -4px 16px rgba(255, 255, 255, 0.25),
-    4px 4px 8px rgba(66, 83, 107, 0.067),
-    inset -4px -6px 25px rgba(255, 255, 255, 0.5),
-    inset 2px 2px 6px rgba(66, 83, 107, 0.097);
+  box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.07), -4px -4px 13px #ffffff,
+    6px 6px 36px rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
 }
 
 .custom {
@@ -147,32 +146,40 @@ label input:checked ~ span:before {
 }
 
 .imagem {
-  background-image: url("A.jpg");
+  background-image: url("A.png");
 }
 
 .imagem2 {
-  background-image: url("B.jpg");
+  background-image: url("B.png");
 }
 
 .imagem3 {
-  background-image: url("C.jpg");
+  background-image: url("C.png");
 }
 
 button {
   width: 300px;
   height: 70px;
-  background: radial-gradient(
+  background: rgb(241, 241, 241);
+  /* z2 */
+
+  box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.07), -4px -4px 13px #ffffff,
+    6px 6px 36px rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  border: none;
+
+  /* background: radial-gradient(
         74.14% 83.33% at 12.93% 12.04%,
         #f0f0f0 0%,
         #cbcbcb 100%
       )
-      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected ,
     #eef0f6;
   box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.07), -4px -4px 13px #ffffff,
     6px 6px 36px rgba(0, 0, 0, 0.06);
-
+*/
   border-radius: 40px;
-  border: none;
+
   font-family: "Inter";
   font-style: normal;
   font-weight: 800;
@@ -192,18 +199,23 @@ button span {
 }
 
 button:hover {
-  background: #d9d9d9;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: -4px -4px 16px rgba(255, 255, 255, 0.25),
+    4px 4px 8px rgba(66, 83, 107, 0.038), inset -4px -6px 25px #ffffff,
+    inset 2px 2px 6px rgba(66, 83, 107, 0.22);
+
+  /* background: #d9d9d9;
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: -4px -4px 16px rgba(255, 255, 255, 0.25),
     4px 4px 8px rgba(66, 83, 107, 0.09),
     inset -4px -6px 25px rgba(255, 255, 255, 0.5),
-    inset 2px 2px 6px rgba(66, 83, 107, 0.22);
+    inset 2px 2px 6px rgba(66, 83, 107, 0.22); */
   /* transform: matrix(-1, 0, 0, 1, 0, 0); */
 }
 
 button:active {
   background-color: #b84040;
-  color: transparent;
+  color: white;
   text-shadow: 2px 2px 3px #ff0000;
   -webkit-background-clip: text;
   -moz-background-clip: text;
