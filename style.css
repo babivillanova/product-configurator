@@ -1,18 +1,32 @@
 @import url("https://fonts.googleapis.com/css?family=Ms+Madi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Inter&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Corinthia&family=DM+Serif+Display&display=swap");
 
+html {
+  display: table;
+  margin: auto;
+}
+
 body {
-  font-family: "Inter", sans-serif;
-  max-width: 1200px;
-  margin: 10px 0px 0 50px;
-  background-color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+
+  /* margin: 10px 0px 0 50px; */
+  background-color: rgb(241, 241, 241);
   color: black;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 #output {
   color: black;
-  padding-left: 10px;
+  margin-top: 2px;
+  font-family: "Staatliches", sans-serif;
+  font-weight: 600;
+  font-size: 1.2em;
+  text-align: right;
 }
 
 .header {
@@ -31,9 +45,11 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
-  font-weight: lighter;
+  font-size: 1em;
+
+  font-weight: 100;
   margin: 0;
+  text-transform: uppercase;
 }
 
 legend {
@@ -51,28 +67,32 @@ legend {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  height: 80vh;
-  width: 100vw;
-  margin-top: 20px;
-  align-items: center;
+  height: 70vh;
+  width: 80vw;
+  margin-top: 80px;
+
+  /* align-items: center; */
+  background-color: white;
+  border-radius: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.048);
+  box-shadow: -4px -4px 16px rgba(255, 255, 255, 0.25),
+    4px 4px 8px rgba(66, 83, 107, 0.067),
+    inset -4px -6px 25px rgba(255, 255, 255, 0.5),
+    inset 2px 2px 6px rgba(66, 83, 107, 0.097);
 }
 
 .custom {
-  justify-content: center;
   height: 80vh;
-  width: 40%;
+  width: 50%;
   margin: 0;
-  background-color: #ffffff;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: top;
-  height: 80vh;
-  width: 50vw;
+  width: 50%;
   margin: 10px;
-  background-color: white;
 }
 label {
   cursor: pointer;
@@ -87,12 +107,14 @@ label span {
   margin-left: 7px;
   color: rgb(8, 8, 8);
   font-size: 0.8em;
+  font-family: "Inter", sans-serif;
 }
 
 label input:checked ~ span {
-  color: rgb(113, 82, 15);
+  color: rgb(113, 61, 15);
   position: relative;
   display: block;
+  font-weight: 600;
 }
 
 label input:checked ~ span:before {
@@ -149,14 +171,15 @@ button {
   box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.07), -4px -4px 13px #ffffff,
     6px 6px 36px rgba(0, 0, 0, 0.06);
 
-  border-radius: 22px;
+  border-radius: 40px;
   border: none;
   font-family: "Inter";
   font-style: normal;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 14px;
   line-height: 24px;
   color: #8d8d8d;
+  text-transform: uppercase;
 }
 
 button span {
@@ -193,6 +216,6 @@ img#Torneira {
   height: 100px;
   background-position: center;
   padding-top: 40px;
-  margin: 20px;
+  margin: 80px;
   border: white;
 }

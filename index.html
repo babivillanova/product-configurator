@@ -20,14 +20,14 @@
         </span>
       </button>
     </div>
-    <h2>Escolha os itens desejados para visualizar a combinação e o valor.</h2>
+    <h2>Escolha os itens desejados para visualizar a combinação e o valor</h2>
+    <p id="output">Valor total</p>
   </head>
 
   <body>
     <div class="container">
       <div class="custom">
         <img id="Torneira" />
-        <p id="output"></p>
       </div>
       <div class="form">
         <legend>Torneira</legend>
@@ -45,6 +45,22 @@
             <span>Torneira C</span>
           </label>
         </form>
+
+        <!-- <legend>Torneira</legend>
+        <form class="seleção">
+          <label class="imagem">
+            <input type="radio" name="radio" value="Torneira A" />
+            <span>Torneira A</span>
+          </label>
+          <label class="imagem2">
+            <input type="radio" name="radio" value="Torneira B" />
+            <span>Torneira B</span>
+          </label>
+          <label class="imagem3">
+            <input type="radio" name="radio" value="Torneira C" />
+            <span>Torneira C</span>
+          </label>
+        </form> -->
       </div>
     </div>
   </body>
@@ -64,7 +80,7 @@
       }
 
       output.innerText = selectedMaterial
-        ? `Você escolheu a ${selectedMaterial}`
+        ? `Você escolheu a ${selectedMaterial}  ___  Total R$ xxxxxxx`
         : `Você ainda não completou sua escolha`;
 
       if (selectedMaterial == "Torneira A") {
