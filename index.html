@@ -6,7 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Configurator</title>
     <link rel="stylesheet" href="style.css" />
-    <h1>Customizador Griffon</h1>
+    <div class="header">
+      <h1>Customizador Griffon</h1>
+      <button id="btn" class="button">
+        <span class="button__text">
+          <span class="button__text-inner">Monte a combinação escolhida</span>
+        </span>
+      </button>
+    </div>
     <h2>Escolha os itens desejados para visualizar a combinação e o valor.</h2>
   </head>
 
@@ -16,28 +23,23 @@
         <p id="output"></p>
       </div>
       <div class="form">
-        <form>
-          <radio>
-            <legend>Torneira</legend>
-            <div class="seleção">
-              <input type="radio" name="radio" id="radio" value="Opção A" />
-              <label class="imagem" for="radio">Opção A</label>
-              <input type="radio" name="radio" id="radio" value="Opção B" />
-              <label class="imagem2" for="radio">Opção B</label>
-              <input type="radio" name="radio" id="radio" value="Opção C" />
-              <label
-                src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220622091251/GOL-Banner-desktop.png"
-                class="imagem2"
-                for="radio"
-                id="radioC"
-                >Opção C</label
-              >
-            </div>
-          </radio>
+        <legend>Torneira</legend>
+        <form class="seleção">
+          <label class="imagem">
+            <input type="radio" name="radio" value="A" />
+            <span>Opção A</span>
+          </label>
+          <label class="imagem2">
+            <input type="radio" name="radio" value="B" />
+            <span>Opção B</span>
+          </label>
+          <label class="imagem">
+            <input type="radio" name="radio" value="C" />
+            <span>Opção C</span>
+          </label>
         </form>
       </div>
     </div>
-    <button id="btn">Monte a combinação escolhida</button>
   </body>
 
   <script>
@@ -48,6 +50,7 @@
       for (const radioButton of radioButtons) {
         if (radioButton.checked) {
           selectedMaterial = radioButton.value;
+          console.log(selectedMaterial);
           break;
         }
       }
@@ -60,4 +63,6 @@
     // document.getElementById("radioC").style.backgroundImage =
     //   "url('https://drive.google.com/file/d/1uGZ4iSu-K_-Zx_YOKyUnc5lRp9C3aeSx/view?usp=sharing')";
   </script>
+  <script src="button/demo.js"></script>
+  <script src="button/index3.js"></script>
 </html>
