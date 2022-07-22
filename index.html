@@ -14,7 +14,9 @@
       <h1>Customizador Griffon</h1>
       <button id="btn" class="button">
         <span class="button__text">
-          <span class="button__text-inner">Monte a combinação escolhida</span>
+          <span class="button__text-inner"
+            >Visualize a combinação escolhida</span
+          >
         </span>
       </button>
     </div>
@@ -24,22 +26,23 @@
   <body>
     <div class="container">
       <div class="custom">
+        <img id="Torneira" />
         <p id="output"></p>
       </div>
       <div class="form">
         <legend>Torneira</legend>
         <form class="seleção">
           <label class="imagem">
-            <input type="radio" name="radio" value="A" />
-            <span>Opção A</span>
+            <input type="radio" name="radio" value="Torneira A" />
+            <span>Torneira A</span>
           </label>
           <label class="imagem2">
-            <input type="radio" name="radio" value="B" />
-            <span>Opção B</span>
+            <input type="radio" name="radio" value="Torneira B" />
+            <span>Torneira B</span>
           </label>
-          <label class="imagem">
-            <input type="radio" name="radio" value="C" />
-            <span>Opção C</span>
+          <label class="imagem3">
+            <input type="radio" name="radio" value="Torneira C" />
+            <span>Torneira C</span>
           </label>
         </form>
       </div>
@@ -55,7 +58,7 @@
       for (const radioButton of radioButtons) {
         if (radioButton.checked) {
           selectedMaterial = radioButton.value;
-          console.log(selectedMaterial);
+
           break;
         }
       }
@@ -63,7 +66,20 @@
       output.innerText = selectedMaterial
         ? `Você escolheu a ${selectedMaterial}`
         : `Você ainda não completou sua escolha`;
+
+      if (selectedMaterial == "Torneira A") {
+        document.getElementById("Torneira").src = "A.jpg";
+      } else if (selectedMaterial == "Torneira B") {
+        document.getElementById("Torneira").src = "B.jpg";
+      } else if (selectedMaterial == "Torneira C") {
+        document.getElementById("Torneira").src = "C.jpg";
+      }
     });
+
+    //create an if condition checking the value of selectedMaterial
+    //if selectedMaterial is equal to "Torneira A" then show the image of Torneira A
+
+    console.log(document.getElementById("mb1").src);
 
     // document.getElementById("radioC").style.backgroundImage =
     //   "url('https://drive.google.com/file/d/1uGZ4iSu-K_-Zx_YOKyUnc5lRp9C3aeSx/view?usp=sharing')";
@@ -218,7 +234,4 @@
         terrenoInput.addEventListener("input", calculateCost);
       });
   </script>
-
-  <script src="button/demo.js"></script>
-  <script src="button/index3.js"></script>
 </html>

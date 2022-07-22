@@ -18,14 +18,15 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
+  margin-top: 20px;
 }
 
 h1 {
   font-family: "DM Serif Display";
   font-size: 2.5em;
   font-weight: 300;
-  margin: 10px -10px 0 0px;
+  margin: -10px 10px 10px 0px;
   color: black;
 }
 
@@ -52,7 +53,7 @@ legend {
   justify-content: space-around;
   height: 80vh;
   width: 100vw;
-  margin: 0;
+  margin-top: 20px;
   align-items: center;
 }
 
@@ -82,7 +83,7 @@ label input {
 }
 
 label span {
-  margin-top: -8px;
+  margin-top: -20px;
   margin-left: 7px;
   color: rgb(8, 8, 8);
   font-size: 0.8em;
@@ -111,14 +112,28 @@ label input:checked ~ span:before {
 }
 
 .imagem,
-.imagem2 {
+.imagem2,
+.imagem3 {
   display: inline-flex;
   width: 100px;
   height: 100px;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("A.jpg");
+
   margin-right: 10px;
+  margin-top: 20px;
+}
+
+.imagem {
+  background-image: url("A.jpg");
+}
+
+.imagem2 {
+  background-image: url("B.jpg");
+}
+
+.imagem3 {
+  background-image: url("C.jpg");
 }
 
 button {
@@ -170,4 +185,14 @@ button:active {
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
+}
+
+img#Torneira {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-position: center;
+  padding-top: 40px;
+  margin: 20px;
+  border: white;
 }
